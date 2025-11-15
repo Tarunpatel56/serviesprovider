@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   get: ^4.7.2
   icons_plus: ^5.0.0
+  animated_botton_navigation: ^0.0.8
 
 dev_dependencies:
   flutter_test:

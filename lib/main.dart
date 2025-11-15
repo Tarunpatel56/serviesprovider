@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthcare/bottombar/bottombar.dart';
 import 'package:healthcare/home/home_page.dart';
 import 'package:healthcare/login/login_page.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage()
+      home: LoginPage()
     );
   }
 }

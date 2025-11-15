@@ -7,6 +7,7 @@ class profList {
   String? exp;
   String? rating;
   String? ratinguser;
+  String? about; 
 
   profList({
     this.image,
@@ -17,6 +18,7 @@ class profList {
     this.exp,
     this.rating,
     this.ratinguser,
+    this.about, 
   });
 
   profList.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ class profList {
     exp = json['exp'];
     rating = json['rating'];
     ratinguser = json['ratinguser'];
+    about = json['about']; 
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +43,7 @@ class profList {
     data['exp'] = this.exp;
     data['rating'] = this.rating;
     data['ratinguser'] = this.ratinguser;
+    data['about'] = this.about;
     return data;
   }
 }
@@ -54,6 +58,8 @@ List dummyData = [
     "exp": "8 years",
     "rating": "4.7",
     "ratinguser": "128",
+    "about":
+        "Dr. Asha Sharma ek experienced General Physician hain, jo City Hospital me practice karti hain. Unka focus accurate diagnosis, effective treatment aur patient-friendly consultation par hota hai. Daily health issues se lekar lifestyle guidance tak, wo har patient ko personalized care provide karti hain.",
   },
   {
     "image": "assets/3.avif",
@@ -64,6 +70,7 @@ List dummyData = [
     "exp": "10 years",
     "rating": "4.9",
     "ratinguser": "254",
+    "about":"Dr. Rohan Verma ek highly trusted Pediatrician hain, jo LittleCare Clinic me bachchon ki healthcare me expertise rakhte hain. Birth to teens tak ke health concerns, vaccinations, growth monitoring aur child-friendly treatment approach ke liye parents un par poora trust karte hain."
   },
   {
     "image": "assets/2.jpg",
@@ -74,6 +81,8 @@ List dummyData = [
     "exp": "5 years",
     "rating": "4.4",
     "ratinguser": "86",
+    "about":"Glow & Glam Salon ek premium \nbeauty & styling destination hai \njahan professional hairstylists \nhaircut, colouring, styling aur \nmakeover services provide karte\n hain. Modern techniques, hygienic \nsetup aur customer-first \napproach ki wajah se salon \nka experience smooth aur \nsatisfying hota hai."
+    
   },
   // {
   //   "image": "https://example.com/images/salon_2.jpg",
