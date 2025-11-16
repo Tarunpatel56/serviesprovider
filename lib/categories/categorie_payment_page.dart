@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthcare/categories/categorie_model.dart';
+import 'package:healthcare/categories/categories_booing_page.dart';
 import 'package:healthcare/model/professional_model.dart';
 import 'package:healthcare/utils/color_util.dart';
 
@@ -42,7 +44,7 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ElevatedButton(
-          onPressed: agreed ? () {} : null,
+          onPressed: agreed ? () {Get.to(CategoriesBooingPage(user1: widget.user1, provider: widget.provider??'', serviceName: widget.serviceName??'', consultationFee:widget.consultationFee, date: widget.date??'', time: widget.time??'', Id:'',));} : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: agreed ? Colors.blue : Colors.grey.shade300,
             foregroundColor: Colors.white,

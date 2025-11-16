@@ -39,6 +39,14 @@ dependencies:
   animated_botton_navigation: ^0.0.8
   table_calendar: ^3.2.0
   introduction_screen: ^4.0.0
+  flutter_chat_ui: ^2.9.1
+
+
+
+
+
+
+
 
 dev_dependencies:
   flutter_test:

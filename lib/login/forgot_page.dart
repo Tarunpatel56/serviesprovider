@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthcare/login/login_page.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
 
@@ -14,9 +15,10 @@ class _ForgotPageState extends State<ForgotPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         Container(
+          Container(
             padding: EdgeInsets.all(10),
             width: double.infinity,
             height: Get.height * 0.2,
@@ -31,20 +33,54 @@ class _ForgotPageState extends State<ForgotPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Welcome Back", style: AppTextStyles.subHeadingTextStyle3),
-                Text(
-                  "Sign in to continue ",
-                  style: AppTextStyles.subHeadingTextStyle2,
+                Text("Forgot Password", style: AppTextStyles.subHeadingTextStyle3),
+                // Text(
+                //   "Sign in to continue ",
+                //   style: AppTextStyles.subHeadingTextStyle2,
+                // ),
+              ],
+            ),
+          ),
+          SizedBox(height: Get.height * 0.1),
+          Text("Email", style: AppTextStyles.headingTextStyle4),
+          TextFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
+              hintText: "Enter your Email",
+            ),
+          ),
+          SizedBox(height: Get.height * 0.1),
+          Center(
+            child: SizedBox(
+              width: Get.width * 0.9,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                ),
+                child: Text(
+                  "Reset Password",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [Text("You remember Password",style: TextStyle(fontSize: 20),),
+                InkWell(
+                  onTap: () {
+                    Get.to(LoginPage());
+                  },
+                  child: Text(" Click now",style: TextStyle(fontSize: 20,color: Colors.blue),),
                 ),
               ],
             ),
           ),
-          SizedBox(height: Get.height*0.1,),
-          Text("Email",style:AppTextStyles.headingTextStyle4,),
-          TextFormField(decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),hintText: "Enter your Email"),),
-      SizedBox(width: Get.width*0.7,
-        child: ElevatedButton(onPressed: (){},style: ElevatedButton.styleFrom(backgroundColor: AppColors.primary), child: Text("Reset Password",style: TextStyle(fontSize: 18,color: Colors.white))))
-      ],),
+        ],
+      ),
     );
   }
 }
