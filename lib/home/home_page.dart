@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+
+
+import 'package:healthcare/categories/category_list_page.dart';
 import 'package:healthcare/home/detail_page.dart';
 import 'package:healthcare/home/home_controler.dart';
 import 'package:healthcare/model/categories_model.dart';
 import 'package:healthcare/model/professional_model.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -111,7 +116,37 @@ class _HomePageState extends State<HomePage> {
 
                     itemBuilder: (context, index) {
                       final item = userCatgList[index];
-                      return Categories(item);
+
+                      return InkWell(
+                        onTap: () {
+                          switch (index) {
+                            case 0:
+                         Get.to(() => CategoryListPage(categoryName: "Doctor"));
+
+                              break;
+                            case 1:
+                            Get.to(() => CategoryListPage(categoryName: "salon"));
+
+                              break;
+                            case 2:
+                            Get.to(() => CategoryListPage(categoryName: "spa"));
+
+                              break;
+                            case 3:
+                           Get.to(() => CategoryListPage(categoryName: "Therapist"));
+
+                              break;
+                            case 4:
+                             Get.to(() => CategoryListPage(categoryName: "Dentist"));
+
+                              break;
+                            default:
+                          Get.to(() => CategoryListPage(categoryName: "Yoga"));
+
+                          }
+                        },
+                        child: Categories(item),
+                      );
                     },
                   ),
                   Row(
@@ -150,7 +185,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               CircleAvatar(backgroundImage: AssetImage(data.image ?? '')),
               // Icon(IconData(int.parse(data.icon ?? '0xf041'), fontFamily: 'MaterialIcons')),
-              Text(data.name ?? ""),
+              Text(data.name ?? "", maxLines: 1),
             ],
           ),
         ),
@@ -161,7 +196,7 @@ class _HomePageState extends State<HomePage> {
   Widget usersProfdata(data) {
     return InkWell(
       onTap: () {
-        Get.to(DetailPage(user: data,));
+        Get.to(DetailPage(user: data, index: data));
       },
       child: ListTile(
         leading: Container(

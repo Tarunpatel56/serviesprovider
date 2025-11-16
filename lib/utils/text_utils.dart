@@ -14,6 +14,9 @@ class AppTextStyles {
   static TextStyle subHeadingTextStyle2 = TextStyle(fontSize: 25,fontWeight: FontWeight.bold,fontFamily: 'Poppins',color: AppColors.background);
     static TextStyle subHeadingTextStyle3 = TextStyle(fontSize: 40,fontWeight: FontWeight.bold,fontFamily: 'Poppins',color: AppColors.background);
   static TextStyle textStyle18 = TextStyle(fontSize: 24);
+    static TextStyle titleStyle = (TextStyle(fontSize: 20, fontWeight: FontWeight.bold));
+    static TextStyle subtitleStyle = (TextStyle(fontSize: 14, color: Colors.grey[700]));
+  
 
   static TextStyle colorHeadingTextStyle({Color? color}) =>
       TextStyle(fontSize: 24, color: color);
