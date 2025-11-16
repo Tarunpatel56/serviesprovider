@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcare/categories/categorie_controller.dart';
+import 'package:healthcare/categories/categorie_detail_page.dart';
 import 'package:healthcare/categories/categorie_model.dart';
+import 'package:healthcare/home/detail_page.dart';
+import 'package:healthcare/utils/color_util.dart';
 
 class CategoryListPage extends StatelessWidget {
+
   final String categoryName; 
-  CategoryListPage({super.key, required this.categoryName});
+  CategoryListPage({super.key, required this.categoryName, });
 
 
   final CategorieController ctrl = Get.put(CategorieController());
@@ -27,7 +31,7 @@ class CategoryListPage extends StatelessWidget {
                   bottomLeft: Radius.circular(35),
                   bottomRight: Radius.circular(30),
                 ),
-                color: Colors.blue,
+                color: AppColors.primary,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -43,6 +47,11 @@ class CategoryListPage extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormField(
+                decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(25)),hintText: "Search for service...",prefixIcon: Icon(Icons.search)),),
             ),
 
 
@@ -104,16 +113,17 @@ class CategoryListPage extends StatelessWidget {
       s.isEmpty ? s : s[0].toUpperCase() + s.substring(1).toLowerCase();
 
 
-  Widget _serviceTile(CategorieModel data) {
+  Widget _serviceTile( data) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
         onTap: () {
+           Get.to(CategorieDetailPage( index: data, user1: data,));
    
         },
         contentPadding: EdgeInsets.all(12),
         leading: ClipRRect(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(20),
           child: Container(
             width: 50,
             height: 50,
@@ -159,11 +169,11 @@ class CategoryListPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              data.price ?? "",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              "₹${data.price ?? ""}",
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),
             ),
             SizedBox(height: 5),
-            Text(data.session ?? ""),
+            Text(data.session ?? "",style: TextStyle(fontSize: 14),),
           ],
         ),
       ),

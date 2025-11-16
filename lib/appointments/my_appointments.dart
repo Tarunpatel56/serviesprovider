@@ -194,18 +194,14 @@ class MyAppointments extends StatelessWidget {
                     width: 64,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      image: data.image != null && data.image!.isNotEmpty
-                          ? DecorationImage(
+                      image: 
+                           DecorationImage(
                               image: AssetImage(data.image!),
                               fit: BoxFit.cover,
                             )
-                          : null,
-                      color: Colors.grey.shade200,
-                    ),
-                    child: (data.image == null || data.image!.isEmpty)
-                        ? Icon(Icons.person, size: 36, color: Colors.grey)
-                        : null,
-                  ),
+                         
+                  
+                  ),),
 
                   SizedBox(width: 12),
 
@@ -244,7 +240,7 @@ class MyAppointments extends StatelessWidget {
                   ),
                   SizedBox(width: 6),
                   Text(data.date ?? ''),
-                  SizedBox(width: 12),
+                  SizedBox(width: 30),
                   Icon(
                     Icons.watch_later_outlined,
                     size: 16,
@@ -261,11 +257,11 @@ class MyAppointments extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.location_on_outlined,
-                    size: 16,
+                    size: 25,
                     color: Colors.blue,
                   ),
                   SizedBox(width: 6),
-                  Expanded(child: Text(data.location ?? '')),
+                  Expanded(child: Text(data.location ?? '',style: AppTextStyles.headingTextStyle4,)),
                 ],
               ),
 

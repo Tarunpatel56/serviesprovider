@@ -7,6 +7,8 @@ class AppTextStyles {
    // Main 
   static TextStyle headingTextStyle = TextStyle(fontSize: 25,fontFamily: "Inter");
    static TextStyle headingTextStyle2 = TextStyle(fontSize: 15,fontFamily: "Poppins");
+      static TextStyle headingTextStyle3 = TextStyle(fontSize: 18,fontFamily: "Poppins");
+            static TextStyle headingTextStyle4 = TextStyle(fontSize: 20,fontFamily: "Poppins");
     static TextStyle mainheadingTextStyle = TextStyle(fontSize: 45,color: Colors.white,fontFamily: "Poppins");
      static TextStyle mainheadingTextStyle2 = TextStyle(fontSize: 25,fontWeight: FontWeight.bold,fontFamily: 'Poppins',color: AppColors.background );
   static TextStyle subHeadingTextStyle = TextStyle(fontSize: 18);

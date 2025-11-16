@@ -34,7 +34,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.all(10),
@@ -60,20 +60,39 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             ListTile(
               leading: CircleAvatar(),
-              title: Text("John Doe"),
-              subtitle: Column(
-                children: [Text("John.doe@email.com"), Text("+1(555)123-4567")],
+              title: Text("John Doe",style: AppTextStyles.headingTextStyle4,),
+              subtitle: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("John.doe@email.com",style: AppTextStyles.headingTextStyle2,), Text("+1(555)123-4567",style: AppTextStyles.headingTextStyle2,)],
               ),
             ),
-            ListTile(title: Text("Edit Profile")),
-            Row(
+            ListTile(title: Text("Edit Profile",style: AppTextStyles.headingTextStyle,)),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Card(child: Column(children: [Text("12"), Text("Appointments")])),
-                Card(child: Column(children: [Text("8"), Text("Completed")])),
-                Card(child: Column(children: [Text("2"), Text("Upcoming")])),
+                Card(
+                  child: Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Column(children: [Padding(padding: EdgeInsetsGeometry.only()),
+                      Text("12",style: AppTextStyles.headingTextStyle2), Text("Appointments",style: AppTextStyles.headingTextStyle2)]),
+                  )),
+                Card(child:  
+              
+                   Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Column(children: [Text("8",style: AppTextStyles.headingTextStyle2,), Text("Completed",style: AppTextStyles.headingTextStyle2)]),
+                  ),
+                ),
+                  Card(child:  
+              
+                   Padding(
+                    padding:  EdgeInsets.all(8.0),
+                    child: Column(children: [Text("2",style: AppTextStyles.headingTextStyle2,), Text("Upcoming",style: AppTextStyles.headingTextStyle2)]),
+                  ),
+                ),
+                
+             
               ],
             ),
-            Text("Account"),
+            Text("Account",style: AppTextStyles.headingTextStyle,),
 
             ListTile(
               leading: CircleAvatar(child: Icon(Icons.person_4_outlined,color: Colors.blue,)),
@@ -99,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
               trailing: Icon(Icons.arrow_forward_ios_sharp),
     
             ),
-            Text("Support"),
+            Text("Support",style: AppTextStyles.headingTextStyle,),
                    ListTile(
               leading: CircleAvatar(child: Icon(Icons.question_mark,color:  Colors.blue,)),
               title: Text("Help Center"),
@@ -111,9 +130,11 @@ class _ProfilePageState extends State<ProfilePage> {
               trailing: Icon(Icons.arrow_forward_ios_sharp),
     
             ),
-            SizedBox(height: Get.height*0.06,
-            width: Get.width*0.8,
-              child: OutlinedButton.icon(onPressed: (){},style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.red),iconColor: Colors.red,iconSize: 25), label: Text("Logout",style: TextStyle(color: Colors.red,fontSize: 20),),icon: Icon(Icons.logout_sharp),))
+            Center(
+              child: SizedBox(height: Get.height*0.06,
+              width: Get.width*0.8,
+                child: OutlinedButton.icon(onPressed: (){},style: OutlinedButton.styleFrom(side: BorderSide(color: Colors.red),iconColor: Colors.red,iconSize: 25), label: Text("Logout",style: TextStyle(color: Colors.red,fontSize: 20),),icon: Icon(Icons.logout_sharp),)),
+            )
         
             // ListView.separated(
             //   itemBuilder: (context, index) {

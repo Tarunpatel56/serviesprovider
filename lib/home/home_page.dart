@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-
 import 'package:healthcare/categories/category_list_page.dart';
 import 'package:healthcare/home/detail_page.dart';
 import 'package:healthcare/home/home_controler.dart';
@@ -10,8 +9,6 @@ import 'package:healthcare/model/categories_model.dart';
 import 'package:healthcare/model/professional_model.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -102,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-
+        
                   GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3, // 3 by 3 grid
@@ -113,46 +110,58 @@ class _HomePageState extends State<HomePage> {
                     itemCount: catgList.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-
+        
                     itemBuilder: (context, index) {
                       final item = userCatgList[index];
-
+        
                       return InkWell(
                         onTap: () {
                           switch (index) {
                             case 0:
-                         Get.to(() => CategoryListPage(categoryName: "Doctor"));
-
+                              Get.to(
+                                () => CategoryListPage(categoryName: "Doctor"),
+                              );
+        
                               break;
                             case 1:
-                            Get.to(() => CategoryListPage(categoryName: "salon"));
-
+                              Get.to(
+                                () => CategoryListPage(categoryName: "salon"),
+                              );
+        
                               break;
                             case 2:
-                            Get.to(() => CategoryListPage(categoryName: "spa"));
-
+                              Get.to(
+                                () => CategoryListPage(categoryName: "spa"),
+                              );
+        
                               break;
                             case 3:
-                           Get.to(() => CategoryListPage(categoryName: "Therapist"));
-
+                              Get.to(
+                                () =>
+                                    CategoryListPage(categoryName: "Therapist"),
+                              );
+        
                               break;
                             case 4:
-                             Get.to(() => CategoryListPage(categoryName: "Dentist"));
-
+                              Get.to(
+                                () => CategoryListPage(categoryName: "Dentist"),
+                              );
+        
                               break;
                             default:
-                          Get.to(() => CategoryListPage(categoryName: "Yoga"));
-
+                              Get.to(
+                                () => CategoryListPage(categoryName: "Yoga"),
+                              );
                           }
                         },
                         child: Categories(item),
                       );
                     },
                   ),
-                  Row(
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Featured Professionals"),
-                      TextButton(onPressed: () {}, child: Text("See All")),
+                      Text("Featured Professionals",style: AppTextStyles.headingTextStyle,),
+                      TextButton(onPressed: () {}, child: Text("See All",style: TextStyle(color: Colors.blue),)),
                     ],
                   ),
                   ListView.separated(
@@ -199,9 +208,10 @@ class _HomePageState extends State<HomePage> {
         Get.to(DetailPage(user: data, index: data));
       },
       child: ListTile(
-        leading: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-          child: Image.asset(data.image ?? '', fit: BoxFit.cover),
+        leading: Container(width: Get.width*0.2,
+        height: Get.height*0.1,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Colors.amber),
+          child: Image.asset(data.image ?? '',fit: BoxFit.fill,),
         ),
         title: Text(data.tittle ?? ""),
         subtitle: Column(
@@ -210,8 +220,9 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 Icon(Icons.star, color: Colors.amber),
-                Text(data.rating ?? ''),
-                Text((data.ratinguser ?? '')),
+                Text(data.rating ?? ''),SizedBox(width: 10,),
+                Text(("(${data.ratinguser ?? ''})")),
+                SizedBox(width: 10,),
 
                 Icon(Icons.electric_bolt),
                 Text(data.exp ?? ''),

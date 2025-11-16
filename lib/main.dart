@@ -4,6 +4,9 @@ import 'package:healthcare/bottombar/bottombar.dart';
 import 'package:healthcare/home/home_page.dart';
 import 'package:healthcare/login/login_page.dart';
 
+import 'login/create_page.dart';
+import 'onboarding/onboarding_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage()
+      home: OnboardingPage()
     );
   }
 }

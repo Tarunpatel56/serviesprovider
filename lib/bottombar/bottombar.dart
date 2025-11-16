@@ -33,8 +33,8 @@ class _BottombarState extends State<Bottombar> {
         indicatorSpaceBotton: 25,
         icons: [
           Icons.home,
-          Icons.directions_car_filled,
-          Icons.person,
+          Icons.calendar_month_sharp,
+          Icons.chat_bubble_outline,
           Icons.person,
         ],
         currentIndex: _currentIndex,

@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcare/categories/categorie_model.dart';
+import 'package:healthcare/categories/categorie_payment_page.dart';
 import 'package:healthcare/home/payment_page.dart';
 import 'package:healthcare/model/professional_model.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class BookingPage extends StatefulWidget {
+class CategorieBookPage extends StatefulWidget {
+    final CategorieModel user1;
   
 
-  
-   final profList? user;
+
   final String? from;
-  const BookingPage({Key? key, required this.user, this.from,  }) : super(key: key);
+  const CategorieBookPage({Key? key,  this.from, required this.user1,  }) : super(key: key);
 
   @override
-  State<BookingPage> createState() => _BookingPageState();
+  State<CategorieBookPage> createState() => _CategorieBookPageState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class _CategorieBookPageState extends State<CategorieBookPage> {
   final List services = [
     {"title": "Regular Consultation", "subtitle": "30 min", "price": "\$40"},
     {"title": "Extended Consultation", "subtitle": "60 min", "price": "\$60"},
@@ -73,15 +74,15 @@ class _BookingPageState extends State<BookingPage> {
       .replaceAll("\$", ""),
 );
 
-if (widget.user != null) {
+if (widget.user1 != null) {
   Get.to(
-    PaymentPage(
-      provider: widget.user?.tittle ?? '',
+    CategoriePaymentPage(
+      provider: widget.user1?.tittle ?? '',
       serviceName: services[selectedServiceIndex!]['title'],
       consultationFee: fee,
       date: "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
-      time: selectedTime!,
-      user: widget.user!,
+      time: selectedTime!, user1: widget.user1!, 
+  
     ),
   );
 }
@@ -133,13 +134,13 @@ if (widget.user != null) {
                       width: 36,
                       height: 36,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
+                        color:AppColors.primary,
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(Icons.arrow_back, color: Colors.white),
+                      child:  Icon(Icons.arrow_back, color: Colors.white),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                   SizedBox(height: 10),
                   Text(
                     'Book Appointment',
                     style: AppTextStyles.titleStyle.copyWith(
@@ -149,7 +150,7 @@ if (widget.user != null) {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                   widget.user?.tittle??'',
+                   widget.user1?.tittle??'',
                     style: AppTextStyles.subtitleStyle.copyWith(
                       color: Colors.white70,
                     ),

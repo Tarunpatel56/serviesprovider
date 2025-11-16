@@ -21,7 +21,7 @@ class CategorieController extends GetxController {
     void loadDoctors() {
     drList([
       CategorieModel(
-        image: 'assets/images/dr_ramesh.png',
+        image: 'assets/12.jpg',
         tittle: 'Dr. Ramesh Sharma',
         subtittle: 'Dentist',
         price: '1200',
@@ -34,7 +34,7 @@ class CategorieController extends GetxController {
         location: 'Mumbai',
       ),
       CategorieModel(
-        image: 'assets/images/dr_neha.png',
+        image: 'assets/21.avif',
         tittle: 'Dr. Neha Verma',
         subtittle: 'Cardiologist',
         price: '1800',
@@ -47,7 +47,7 @@ class CategorieController extends GetxController {
         location: 'Delhi',
       ),
       CategorieModel(
-        image: 'assets/images/dr_amit.png',
+        image: 'assets/13.jpg',
         tittle: 'Dr. Amit Patil',
         subtittle: 'Physiotherapist',
         price: '900',
@@ -62,7 +62,7 @@ class CategorieController extends GetxController {
     ]);
      salonList.assignAll([
       CategorieModel(
-        image: 'assets/images/salon_rahul.png',
+        image: 'assets/2.jpeg',
         tittle: 'Rahul Hair Studio',
         subtittle: 'Hair Stylist',
         price: '600',
@@ -75,7 +75,7 @@ class CategorieController extends GetxController {
         location: 'Mumbai',
       ),
       CategorieModel(
-        image: 'assets/images/salon_neha.png',
+        image: 'assets/11.jpeg',
         tittle: 'Neha Beauty Salon',
         subtittle: 'Makeup & Hair Artist',
         price: '1200',
@@ -88,7 +88,7 @@ class CategorieController extends GetxController {
         location: 'Delhi',
       ),
       CategorieModel(
-        image: 'assets/images/salon_amit.png',
+        image: 'assets/4.jpg',
         tittle: 'Amit Grooming Studio',
         subtittle: 'Men\'s Hair Expert',
         price: '500',
@@ -103,7 +103,7 @@ class CategorieController extends GetxController {
     ]);
       spaList.assignAll([
       CategorieModel(
-        image: 'assets/images/spa_bliss.png',
+        image: 'assets/22.jpeg',
         tittle: 'Bliss Spa & Wellness',
         subtittle: 'Relaxation & Massage',
         price: '1500',
@@ -116,7 +116,7 @@ class CategorieController extends GetxController {
         location: 'Mumbai',
       ),
       CategorieModel(
-        image: 'assets/images/spa_serene.png',
+        image: 'assets/33.jpeg',
         tittle: 'Serene Spa',
         subtittle: 'Therapeutic Spa',
         price: '1300',
@@ -130,10 +130,10 @@ class CategorieController extends GetxController {
       ),
     ]);
 
-    // ------------------ THERAPIST DATA ------------------
+
     therapistList.assignAll([
       CategorieModel(
-        image: 'assets/images/therapist_arya.png',
+        image: 'assets/5.jpeg',
         tittle: 'Arya Therapy',
         subtittle: 'Counselor / Therapist',
         price: '900',
@@ -146,7 +146,7 @@ class CategorieController extends GetxController {
         location: 'Chennai',
       ),
       CategorieModel(
-        image: 'assets/images/therapist_rocky.png',
+        image: 'assets/6.avif',
         tittle: 'Rocky Counseling',
         subtittle: 'Psychotherapist',
         price: '1100',
@@ -160,10 +160,10 @@ class CategorieController extends GetxController {
       ),
     ]);
 
-    // ------------------ DENTIST DATA ------------------
+
     dentistList.assignAll([
       CategorieModel(
-        image: 'assets/images/dentist_sunil.png',
+        image: 'assets/14.jpg',
         tittle: 'Sunil Dental Care',
         subtittle: 'Dentist',
         price: '1000',
@@ -176,7 +176,7 @@ class CategorieController extends GetxController {
         location: 'Ahmedabad',
       ),
       CategorieModel(
-        image: 'assets/images/dentist_pooja.png',
+        image: 'assets/24.jpg',
         tittle: 'Pooja Dental Studio',
         subtittle: 'Orthodontist',
         price: '2000',
@@ -190,10 +190,10 @@ class CategorieController extends GetxController {
       ),
     ]);
 
-    // ------------------ YOGA TRAINER DATA ------------------
+
     yogaList.assignAll([
       CategorieModel(
-        image: 'assets/images/yoga_isha.png',
+        image: 'assets/44.jpeg',
         tittle: 'Isha Yoga Center',
         subtittle: 'Yoga Trainer',
         price: '600',
@@ -206,7 +206,7 @@ class CategorieController extends GetxController {
         location: 'Rishikesh',
       ),
       CategorieModel(
-        image: 'assets/images/yoga_raj.png',
+        image: 'assets/4.jpg',
         tittle: 'Raj Yoga Studio',
         subtittle: 'Yoga Instructor',
         price: '500',

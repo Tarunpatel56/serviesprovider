@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcare/bottombar/bottombar.dart';
-import 'package:healthcare/login/create_page.dart';
-import 'package:healthcare/login/forgot_page.dart';
+import 'package:healthcare/login/login_page.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class CreatePage extends StatefulWidget {
+  const CreatePage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<CreatePage> createState() => _CreatePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CreatePageState extends State<CreatePage> {
+  bool hidePassword = true;
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,55 +37,101 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Welcome Back", style: AppTextStyles.subHeadingTextStyle3),
                 Text(
-                  "Sign in to continue ",
+                  "Create Account",
+                  style: AppTextStyles.subHeadingTextStyle3,
+                ),
+                Text(
+                  "Sign up to get started ",
                   style: AppTextStyles.subHeadingTextStyle2,
                 ),
               ],
             ),
           ),
-          SizedBox(height: Get.height * 0.05),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Email",style: AppTextStyles.headingTextStyle3,),
+                SizedBox(height: Get.height * 0.01),
+                Text("Full Name", style: AppTextStyles.headingTextStyle3),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
+                    prefixIcon: Icon(Icons.person),
+                    hintText: "Enter your full name",
+                    hintStyle: AppTextStyles.subHeadingTextStyle,
+                  ),
+                ),
+                SizedBox(height: Get.height * 0.01),
+                Text("Email", style: AppTextStyles.headingTextStyle3),
+                TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    prefixIcon: Icon(Icons.email_outlined),
                     hintText: "Enter your Email",
                     hintStyle: AppTextStyles.subHeadingTextStyle,
                   ),
                 ),
-                SizedBox(height: Get.height * 0.02),
-                Text("Password",style: AppTextStyles.headingTextStyle3,),
+                SizedBox(height: Get.height * 0.01),
+                Text("Phone Number", style: AppTextStyles.headingTextStyle3),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
-                    hintText: "Enter your password",
+                    prefixIcon: Icon(Icons.phone),
+                    hintText: "Enter your phone number",
                     hintStyle: AppTextStyles.subHeadingTextStyle,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Get.to(ForgotPage());
-                    },
-                    child: Text(
-                      "Forgot password",
-                      style: AppTextStyles.subHeadingTextStyle,
+                SizedBox(height: Get.height * 0.01),
+                Text("Password", style: AppTextStyles.headingTextStyle3),
+                TextFormField(
+                  obscureText: hidePassword,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(40),
                     ),
+                    prefixIcon: Icon(Icons.lock_outline_rounded),
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        setState(() {
+                          hidePassword = !hidePassword;
+                        });
+                      },
+                      child: Icon(
+                        hidePassword
+                            ? Icons.remove_red_eye_sharp
+                            : Icons.visibility_off,
+                      ),
+                    ),
+                    hintText: "Create a password",
+                    hintStyle: AppTextStyles.subHeadingTextStyle,
                   ),
+                ),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: isChecked,
+                      focusColor: Colors.blue,
+
+                      onChanged: (value) {
+                        setState(() {
+                          isChecked = value!;
+                        });
+                      },
+                    ),
+                    Text("I agree to the terms & conditions"),
+                  ],
                 ),
                 SizedBox(
                   width: Get.width * 0.9,
-                  height: Get.height * 0.05,
+                  height: Get.width * 0.1,
                   child: ElevatedButton(
                     onPressed: () {
                       Get.to(Bottombar());
@@ -96,25 +143,26 @@ class _LoginPageState extends State<LoginPage> {
                       backgroundColor: AppColors.primary,
                     ),
                     child: Text(
-                      "Sign in",
+                      "Create Account",
                       style: AppTextStyles.subHeadingTextStyle4,
                     ),
                   ),
                 ),
-                SizedBox(height: Get.height * 0.02),
+                SizedBox(height: Get.height * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Divider(thickness: 5, height: 5),
 
                     Text(
-                      "Or continue with",
+                      "Or signup with",
+
                       style: AppTextStyles.subHeadingTextStyle,
                     ),
-                    Divider(),
                   ],
                 ),
-                SizedBox(height: Get.height * 0.05),
+                SizedBox(height: Get.height * 0.01),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -159,20 +207,20 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                SizedBox(height: Get.height * 0.05),
+                SizedBox(height: Get.height * 0.01),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "Don't have an account?",
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      "Already have an accout?",
+                      style: TextStyle(fontSize: 18),
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(CreatePage());
+                        Get.to(LoginPage());
                       },
                       child: Text(
-                        "Sign Up",
+                        " Sign In",
                         style: TextStyle(color: Colors.blue, fontSize: 18),
                       ),
                     ),
