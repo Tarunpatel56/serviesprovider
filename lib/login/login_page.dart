@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: Get.height * 0.05,
                   child: ElevatedButton(
                     onPressed: () {
-                      Get.to(Bottombar());
+                      Get.offAll(Bottombar());
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -118,43 +118,55 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(20),
-                      ),
-                      child: Container(
-                        width: Get.width * 0.2,
-                        height: Get.height * 0.045,
-
-                        child: Image.asset(
-                          "assets/google.png",
-                          height: Get.height * 0.03,
-                          width: Get.width * 0.07,
+                      InkWell(onTap: () {
+                      
+                    },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusGeometry.circular(20),
+                        ),
+                        child: Container(
+                          width: Get.width * 0.2,
+                          height: Get.height * 0.045,
+                      
+                          child: Image.asset(
+                            "assets/google.png",
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.07,
+                          ),
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(20),
-                      ),
-                      child: Container(
-                        width: Get.width * 0.2,
-
-                        child: Icon(
-                          Icons.facebook,
-                          size: 45,
-                          color: Colors.blue,
+                  InkWell(onTap: () {
+                      
+                    },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusGeometry.circular(20),
+                        ),
+                        child: Container(
+                          width: Get.width * 0.2,
+                      
+                          child: Icon(
+                            Icons.facebook,
+                            size: 45,
+                            color: Colors.blue,
+                          ),
                         ),
                       ),
                     ),
-                    Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusGeometry.circular(20),
-                      ),
-                      child: Container(
-                        width: Get.width * 0.2,
-
-                        child: Icon(Icons.apple, size: 45),
+                       InkWell(onTap: () {
+                      
+                    },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadiusGeometry.circular(20),
+                        ),
+                        child: Container(
+                          width: Get.width * 0.2,
+                      
+                          child: Icon(Icons.apple, size: 45),
+                        ),
                       ),
                     ),
                   ],

@@ -16,7 +16,7 @@ class AppointmentsController extends GetxController {
   void _loadDummy() {
     upcoming.assignAll([
       AppointmentModel.fromMap({
-        "image": "assets/images/dentist.png",
+        "image": "assets/21.avif",
         "tittle": "Dr. Riya Mehta",
         "catg": "Dentist",
         "perps": "Teeth Whitening",
@@ -26,7 +26,7 @@ class AppointmentsController extends GetxController {
         "bookingid": "1001"
       }),
         AppointmentModel.fromMap({
-         "image": "assets/images/yoga.png",
+         "image": "assets/2.jpg",
       "tittle": "Aarav Shah",
       "catg": "Yoga Trainer",
       "perps": "Online Yoga Session",
@@ -36,7 +36,7 @@ class AppointmentsController extends GetxController {
       "bookingid": "1002"
       }),
         AppointmentModel.fromMap({
-       "image": "assets/images/doc_general.png",
+       "image": "assets/23.jpg",
       "tittle": "Dr. Kiran Patel",
       "catg": "General Physician",
       "perps": "Routine Checkup",
@@ -46,7 +46,7 @@ class AppointmentsController extends GetxController {
       "bookingid": "1003"
       }),
         AppointmentModel.fromMap({
-    "image": "assets/images/hair.png",
+    "image": "assets/22.jpeg",
       "tittle": "Priya Arora",
       "catg": "Hair Stylist",
       "perps": "Hair Spa & Treatment",
@@ -59,7 +59,7 @@ class AppointmentsController extends GetxController {
 
     past.assignAll([
       AppointmentModel.fromMap({
-        "image": "assets/images/derma.png",
+        "image": "assets/24.jpg",
       "tittle": "Dr. Anisha Kapoor",
       "catg": "Dermatologist",
       "perps": "Skin Allergy Treatment",
@@ -69,7 +69,7 @@ class AppointmentsController extends GetxController {
       "bookingid": "2001"
       }),
        AppointmentModel.fromMap({
-        "image": "assets/images/cardio.png",
+        "image": "assets/13.jpg",
       "tittle": "Dr. Rajesh Sharma",
       "catg": "Cardiologist",
       "perps": "Heart Checkup",

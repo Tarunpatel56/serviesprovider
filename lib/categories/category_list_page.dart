@@ -131,8 +131,8 @@ class CategoryListPage extends StatelessWidget {
             child: (data.image != null && data.image!.trim().isNotEmpty)
                 ? Image.asset(
                     data.image!,
-                    height: 50,
-                    width: 50,
+                    height: Get.height*0.8,
+                    width: Get.width*02,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Icon(Icons.broken_image, size: 28);

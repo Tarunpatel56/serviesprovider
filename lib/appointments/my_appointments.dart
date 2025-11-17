@@ -183,6 +183,7 @@ class MyAppointments extends StatelessWidget {
                   ),
                 ],
               ),
+              Divider(),
 
               SizedBox(height: 8),
 
@@ -190,10 +191,10 @@ class MyAppointments extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 64,
-                    width: 64,
+                    height: Get.height*0.08,
+                    width: Get.width*0.2,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+                      borderRadius: BorderRadius.circular(15),
                       image: 
                            DecorationImage(
                               image: AssetImage(data.image!),
@@ -211,7 +212,7 @@ class MyAppointments extends StatelessWidget {
                       children: [
                         Text(
                           data.tittle ?? '',
-                          style: AppTextStyles.headingTextStyle,
+                          style: AppTextStyles.headingTextStyle4,
                         ),
                         SizedBox(height: 4),
                         Text(
@@ -261,9 +262,10 @@ class MyAppointments extends StatelessWidget {
                     color: Colors.blue,
                   ),
                   SizedBox(width: 6),
-                  Expanded(child: Text(data.location ?? '',style: AppTextStyles.headingTextStyle4,)),
+                  Expanded(child: Text(data.location ?? '',style: AppTextStyles.headingTextStyle2,)),
                 ],
               ),
+              Divider(),
 
               SizedBox(height: 12),
 

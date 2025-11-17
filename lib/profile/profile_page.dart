@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcare/login/login_page.dart';
+import 'package:healthcare/profile/edit_profile.dart';
 import 'package:healthcare/profile/profile_model.dart';
 import 'package:healthcare/utils/color_util.dart';
 import 'package:healthcare/utils/text_utils.dart';
@@ -135,54 +136,79 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Text("Account", style: AppTextStyles.headingTextStyle),
 
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.person_4_outlined, color: Colors.blue),
-              ),
-              title: Text("Edit Profile"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
-            ),
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(
-                  Icons.notifications_none_outlined,
-                  color: Colors.orange,
+            InkWell(
+              onTap: () {
+                Get.to(EditProfile());
+              },
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.person_4_outlined, color: Colors.blue),
                 ),
+                title: Text("Edit Profile"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
               ),
-              title: Text("Notification"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
             ),
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.credit_card_outlined, color: Colors.green),
-              ),
-              title: Text("Payment Methods"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
-            ),
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(
-                  Icons.lock_outline_rounded,
-                  color: Colors.deepPurpleAccent,
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(
+                    Icons.notifications_none_outlined,
+                    color: Colors.orange,
+                  ),
                 ),
+                title: Text("Notification"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
               ),
-              title: Text("Privacy & Security"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.credit_card_outlined, color: Colors.green),
+                ),
+                title: Text("Payment Methods"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
+              ),
+            ),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(
+                    Icons.lock_outline_rounded,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+                title: Text("Privacy & Security"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
+              ),
             ),
             Text("Support", style: AppTextStyles.headingTextStyle),
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.question_mark, color: Colors.blue),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.question_mark, color: Colors.blue),
+                ),
+                title: Text("Help Center"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
               ),
-              title: Text("Help Center"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
             ),
-            ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.notes_outlined, color: Colors.grey),
+
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: CircleAvatar(
+                  child: Icon(Icons.notes_outlined, color: Colors.grey),
+                ),
+                title: Text("Payment Methods"),
+                trailing: Icon(Icons.arrow_forward_ios_sharp),
               ),
-              title: Text("Payment Methods"),
-              trailing: Icon(Icons.arrow_forward_ios_sharp),
             ),
             Center(
               child: SizedBox(
