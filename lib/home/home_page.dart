@@ -50,37 +50,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
+      // backgroundColor: AppColors.primary,
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        title: Column(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),actionsPadding: EdgeInsets.all(10),elevation: 10,toolbarHeight: 90,
+        title: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Good Morning", style: AppTextStyles.subHeadingTextStyle4),
-            Text("John Doe", style: AppTextStyles.subHeadingTextStyle2),
+            Text("Good Morning", style: AppTextStyles.subHeadingTextStyle2),
+            Text("John Doe", style: AppTextStyles.subHeadingTextStyle4),
           ],
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.location_on_outlined)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.location_on_outlined, color: AppColors.background),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.notifications_none, color: AppColors.background),
+          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.only(top: 20, right: 5, left: 5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25),
-                ),
-                color: AppColors.background,
-              ),
+            Padding(
+              padding: const EdgeInsets.all(15),
               child: Column(
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                       hintText: "Search for services..",
                       prefixIcon: Icon(Icons.search),
                       hintStyle: AppTextStyles.subHeadingTextStyle,
@@ -89,7 +96,10 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Categories", style: AppTextStyles.headingTextStyle),
+                      Text(
+                        "Categories",
+                        style: AppTextStyles.headingTextStyle4,
+                      ),
                       TextButton(
                         onPressed: () {},
                         child: Text(
@@ -99,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-        
+
                   GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3, // 3 by 3 grid
@@ -110,10 +120,10 @@ class _HomePageState extends State<HomePage> {
                     itemCount: catgList.length,
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
-        
+
                     itemBuilder: (context, index) {
                       final item = userCatgList[index];
-        
+
                       return InkWell(
                         onTap: () {
                           switch (index) {
@@ -121,32 +131,32 @@ class _HomePageState extends State<HomePage> {
                               Get.to(
                                 () => CategoryListPage(categoryName: "Doctor"),
                               );
-        
+
                               break;
                             case 1:
                               Get.to(
                                 () => CategoryListPage(categoryName: "salon"),
                               );
-        
+
                               break;
                             case 2:
                               Get.to(
                                 () => CategoryListPage(categoryName: "spa"),
                               );
-        
+
                               break;
                             case 3:
                               Get.to(
                                 () =>
                                     CategoryListPage(categoryName: "Therapist"),
                               );
-        
+
                               break;
                             case 4:
                               Get.to(
                                 () => CategoryListPage(categoryName: "Dentist"),
                               );
-        
+
                               break;
                             default:
                               Get.to(
@@ -158,10 +168,20 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                   ),
-                  Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Featured Professionals",style: AppTextStyles.headingTextStyle,),
-                      TextButton(onPressed: () {}, child: Text("See All",style: TextStyle(color: Colors.blue),)),
+                      Text(
+                        "Featured Professionals",
+                        style: AppTextStyles.headingTextStyle4,
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "See All",
+                          style: TextStyle(color: Colors.blue),
+                        ),
+                      ),
                     ],
                   ),
                   ListView.separated(
@@ -208,10 +228,14 @@ class _HomePageState extends State<HomePage> {
         Get.to(DetailPage(user: data, index: data));
       },
       child: ListTile(
-        leading: Container(width: Get.width*0.2,
-        height: Get.height*0.1,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Colors.amber),
-          child: Image.asset(data.image ?? '',fit: BoxFit.fill,),
+        leading: Container(
+          width: Get.width * 0.2,
+          height: Get.height * 0.1,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: Colors.amber,
+          ),
+          child: Image.asset(data.image ?? '', fit: BoxFit.cover),
         ),
         title: Text(data.tittle ?? ""),
         subtitle: Column(
@@ -220,11 +244,12 @@ class _HomePageState extends State<HomePage> {
             Row(
               children: [
                 Icon(Icons.star, color: Colors.amber),
-                Text(data.rating ?? ''),SizedBox(width: 10,),
+                Text(data.rating ?? ''),
+                SizedBox(width: 10),
                 Text(("(${data.ratinguser ?? ''})")),
-                SizedBox(width: 10,),
+                SizedBox(width: 10),
 
-                Icon(Icons.electric_bolt),
+                Icon(Icons.workspace_premium, size: 18),
                 Text(data.exp ?? ''),
               ],
             ),

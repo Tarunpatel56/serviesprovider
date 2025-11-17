@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:healthcare/home/Booking_confirmed.dart';
 import 'package:healthcare/model/professional_model.dart';
+import 'package:healthcare/utils/color_util.dart';
 
 class PaymentPage extends StatefulWidget {
   final profList user;
@@ -61,6 +62,31 @@ class _PaymentPageState extends State<PaymentPage> {
             style: const TextStyle(fontSize: 18),
           ),
         ),
+      ), appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        actionsPadding: EdgeInsets.all(10),
+        elevation: 10,
+        toolbarHeight: 100,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
+        title: Text(
+          "Payment\nComplete your booking",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 23,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
 
       body: SafeArea(
@@ -69,26 +95,8 @@ class _PaymentPageState extends State<PaymentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-                ),
-                child: const Text(
-                  "Payment\nComplete your booking",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 23,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+         
+            
 
               const SizedBox(height: 15),
 

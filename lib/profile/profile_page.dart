@@ -34,33 +34,21 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(appBar: AppBar( title: Text(
+                    "Profile & Settings",
+                    style: AppTextStyles.subHeadingTextStyle2,
+                  ),backgroundColor: AppColors.primary,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),actionsPadding: EdgeInsets.all(10),elevation: 10,toolbarHeight: 90,),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              width: double.infinity,
-              height: Get.height * 0.1,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(30),
-                ),
-                color: AppColors.primary,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Profile & Settings",
-                    style: AppTextStyles.subHeadingTextStyle2,
-                  ),
-                ],
-              ),
-            ),
+          
             ListTile(
               leading: CircleAvatar(
                 backgroundImage: AssetImage("assets/4.jpg"),
@@ -92,43 +80,53 @@ class _ProfilePageState extends State<ProfilePage> {
                 Card(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Padding(padding: EdgeInsetsGeometry.only()),
-                        Text("12", style: AppTextStyles.headingTextStyle2),
-                        Text(
-                          "Appointments",
-                          style: AppTextStyles.headingTextStyle2,
-                        ),
-                      ],
+                    child: Container(
+                      height: Get.height*0.05,
+                    width: Get.width*0.23,
+                      child: Column(
+                        children: [
+                          Padding(padding: EdgeInsetsGeometry.only()),
+                          Text("12",),
+                          Text(
+                            "Appointments",
+                            style: TextStyle(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 Card(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text("8", style: AppTextStyles.headingTextStyle2),
-                        Text(
-                          "Completed",
-                          style: AppTextStyles.headingTextStyle2,
-                        ),
-                      ],
+                    child: Container(  height: Get.height*0.05,
+                    width: Get.width*0.23,
+                      child: Column(
+                        children: [
+                          Text("8", ),
+                          Text(
+                            "Completed",
+                          
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
                 Card(
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text("2", style: AppTextStyles.headingTextStyle2),
-                        Text(
-                          "Upcoming",
-                          style: AppTextStyles.headingTextStyle2,
-                        ),
-                      ],
+                    child: Container(  height: Get.height*0.05,
+                    width: Get.width*0.23,
+                      child: Column(
+                        children: [
+                          Text("2", ),
+                          Text(
+                            "Upcoming",
+                           
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

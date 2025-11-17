@@ -9,12 +9,11 @@ import 'package:healthcare/utils/text_utils.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CategorieBookPage extends StatefulWidget {
-    final CategorieModel user1;
-  
-
+  final CategorieModel user1;
 
   final String? from;
-  const CategorieBookPage({Key? key,  this.from, required this.user1,  }) : super(key: key);
+  const CategorieBookPage({Key? key, this.from, required this.user1})
+    : super(key: key);
 
   @override
   State<CategorieBookPage> createState() => _CategorieBookPageState();
@@ -68,28 +67,26 @@ class _CategorieBookPageState extends State<CategorieBookPage> {
             child: ElevatedButton(
               onPressed: canProceed
                   ? () {
-                     final fee = double.parse(
-  services[selectedServiceIndex!]['price']
-      .toString()
-      .replaceAll("\$", ""),
-);
+                      final fee = double.parse(
+                        services[selectedServiceIndex!]['price']
+                            .toString()
+                            .replaceAll("\$", ""),
+                      );
 
-if (widget.user1 != null) {
-  Get.to(
-    CategoriePaymentPage(
-      provider: widget.user1?.tittle ?? '',
-      serviceName: services[selectedServiceIndex!]['title'],
-      consultationFee: fee,
-      date: "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
-      time: selectedTime!, user1: widget.user1!, 
-  
-    ),
-  );
-}
-
-                     
-                       
-                      
+                      if (widget.user1 != null) {
+                        Get.to(
+                          CategoriePaymentPage(
+                            provider: widget.user1?.tittle ?? '',
+                            serviceName:
+                                services[selectedServiceIndex!]['title'],
+                            consultationFee: fee,
+                            date:
+                                "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
+                            time: selectedTime!,
+                            user1: widget.user1!,
+                          ),
+                        );
+                      }
                     }
                   : null,
               style: ElevatedButton.styleFrom(
@@ -111,54 +108,46 @@ if (widget.user1 != null) {
           ),
         ),
       ),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        actionsPadding: EdgeInsets.all(10),
+        elevation: 10,
+        toolbarHeight: 100,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Book Appointment',
+              style: AppTextStyles.titleStyle.copyWith(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              widget.user1?.tittle ?? '',
+              style: AppTextStyles.subtitleStyle.copyWith(
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              decoration: BoxDecoration(
-                color: AppColors.headerBg,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(28),
-                  bottomRight: Radius.circular(28),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // back button
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).maybePop(),
-                    child: Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                        color:AppColors.primary,
-                        shape: BoxShape.circle,
-                      ),
-                      child:  Icon(Icons.arrow_back, color: Colors.white),
-                    ),
-                  ),
-                   SizedBox(height: 10),
-                  Text(
-                    'Book Appointment',
-                    style: AppTextStyles.titleStyle.copyWith(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                   widget.user1?.tittle??'',
-                    style: AppTextStyles.subtitleStyle.copyWith(
-                      color: Colors.white70,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(12, 12, 12, 20),

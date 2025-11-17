@@ -19,21 +19,27 @@ class _OnboardingPageState extends State<OnboardingPage> {
         pages: [
           PageViewModel(
             title: '',
-            bodyWidget: SizedBox(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [SizedBox(height: Get.height*0.13,),
-                  Image.asset("assets/scheduling.png"),
-                  Text(
-                    'Easy Scheduling',
-                    style: TextStyle(fontSize: 35, color: Colors.black),
-                  ),
-                  Text(
-                    'Book Appointments with your favorite \nprofessionals in just a few taps.',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
+            bodyWidget: SizedBox( 
+                  height: MediaQuery.sizeOf(context).height * 0.6,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [SizedBox(height: Get.height*0.13,),
+                    Center(
+                      child: Container(height: 250,width: 250,
+                        child: Image.asset("assets/scheduling.png")),
+                    ),
+                    Text(
+                      'Easy Scheduling',
+                      style: TextStyle(fontSize: 25, color: Colors.black),
+                    ),
+                    Text(
+                      'Book Appointments with your favorite \nprofessionals in just a few taps.',
+                      style: TextStyle(color: Colors.grey, fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -45,10 +51,13 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [
-                  Image.asset("assets/verified.png"),
+               Center(
+                 child: Container(height: 250,width: 250,
+                      child: Image.asset("assets/verified.png")),
+               ),
                   Text(
                     'Verified Professionals',
-                    style: TextStyle(color: Colors.black, fontSize: 32),
+                    style: TextStyle(color: Colors.black, fontSize: 25),
                   ),
                   Wrap(
                     children: [
@@ -66,14 +75,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
           PageViewModel(
             title: '',
             bodyWidget: SizedBox(
-              height: Get.height*0.8,
+              height: Get.height*0.75,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/save.png'),
+               Center(
+                 child: Container(height: 200,width: 200,
+                      child: Image.asset('assets/save.png')),
+               ),
                   Text(
                     'Save Your Time',
-                    style: TextStyle(fontSize: 35, color: Colors.black),
+                    style: TextStyle(fontSize: 25, color: Colors.black),
                   ),
                   Text(
                     'Manage all your appointments in one place\nwith real-time updates',

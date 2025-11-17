@@ -4,6 +4,7 @@ import 'package:healthcare/appointments/appointment_model.dart';
 import 'package:healthcare/appointments/my_appointments.dart';
 import 'package:healthcare/home/home_page.dart';
 import 'package:healthcare/home/message_page.dart';
+import 'package:healthcare/messagelist/message_list.dart';
 import 'package:healthcare/profile/profile_page.dart';
 
 class Bottombar extends StatefulWidget {
@@ -20,7 +21,7 @@ class _BottombarState extends State<Bottombar> {
   final List<Widget> _pages = [
     Center(child: HomePage()),
     Center(child: MyAppointments()),
-    Center(child: MessagePage()),
+    Center(child: MessageList()),
     Center(child: ProfilePage()),
   ];
   

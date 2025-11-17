@@ -40,22 +40,22 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
           Image.asset("assets/right.png",height: Get.height*0.2,),
           Text(
             "Booking Confirmed!",
-            style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
           Text(
             "Your Appointment has been successfully\nbook",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, color: Colors.grey),
+            style: TextStyle(fontSize: 18, color: Colors.grey),
           ),
           ListTile(
             leading: Icon(Icons.calendar_today_outlined, size: 55),
             title: Text(
               "Appointment Deatails",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
               "Booking ID:#0001",
-              style: TextStyle(fontSize: 20, color: Colors.grey),
+              style: TextStyle(fontSize: 17, color: Colors.grey),
             ),
           ),
           Divider(),
@@ -63,14 +63,14 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
             alignment: Alignment.bottomLeft,
             child: Text(
               "provider",
-              style: TextStyle(fontSize: 20, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Text(
               widget.provider,
-              style: TextStyle(fontSize: 20, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
           ),
 
@@ -81,11 +81,11 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
                 children: [
                   Text(
                     "Date",
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                   Text(
                     widget.date,
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],
               ),
@@ -95,11 +95,11 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
                 children: [
                   Text(
                     "Time",
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                   Text(
                     widget.time,
-                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                 ],
               ),
@@ -109,14 +109,14 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
             alignment: Alignment.bottomLeft,
             child: Text(
               "service",
-              style: TextStyle(fontSize: 20, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Text(
               "Regular Consultantion",
-              style: TextStyle(fontSize: 20, color: Colors.grey),
+              style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
           ),
           Row(
@@ -124,7 +124,7 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
             children: [
               Text(
                 "Total paid",
-                style: TextStyle(fontSize: 20, color: Colors.grey),
+                style: TextStyle(fontSize: 18, color: Colors.grey),
               ),
               Text(
                 "\$${totalAmount.toStringAsFixed(2)}",

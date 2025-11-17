@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:healthcare/utils/color_util.dart';
-
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -13,8 +13,24 @@ class _EditProfileState extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: AppColors.primary,
-      title: Text("Edit Profile",style: TextStyle(color: Colors.white,fontSize: 24),),),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,  shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),actionsPadding: EdgeInsets.all(10),elevation: 10,toolbarHeight: 100,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
+        title: Text(
+          "Edit Profile",
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(8),
         child: Column(
@@ -89,7 +105,7 @@ class _EditProfileState extends State<EditProfile> {
                     TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText:  "+1(555)123-4567",
+                        hintText: "+1(555)123-4567",
                         prefixIcon: Icon(Icons.phone),
                         suffixIcon: TextButton(
                           style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -102,7 +118,7 @@ class _EditProfileState extends State<EditProfile> {
                     TextField(
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText:  "John.doe@email.com",
+                        hintText: "John.doe@email.com",
                         prefixIcon: Icon(Icons.email),
                         suffixIcon: TextButton(
                           onPressed: () {},

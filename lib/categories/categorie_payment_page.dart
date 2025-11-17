@@ -4,9 +4,10 @@ import 'package:healthcare/categories/categorie_model.dart';
 import 'package:healthcare/categories/categories_booing_page.dart';
 import 'package:healthcare/model/professional_model.dart';
 import 'package:healthcare/utils/color_util.dart';
+import 'package:healthcare/utils/text_utils.dart';
 
 class CategoriePaymentPage extends StatefulWidget {
-   final CategorieModel user1;
+  final CategorieModel user1;
   final String? from;
   final String provider;
   final String serviceName;
@@ -20,7 +21,9 @@ class CategoriePaymentPage extends StatefulWidget {
     required this.serviceName,
     required this.consultationFee,
     required this.date,
-    required this.time, required this.user1, this.from,
+    required this.time,
+    required this.user1,
+    this.from,
   });
 
   @override
@@ -28,9 +31,7 @@ class CategoriePaymentPage extends StatefulWidget {
 }
 
 class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
-  
-  int selectedMethod = 0; 
-
+  int selectedMethod = 0;
 
   bool agreed = false;
 
@@ -44,15 +45,59 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ElevatedButton(
-          onPressed: agreed ? () {Get.to(CategoriesBooingPage(user1: widget.user1, provider: widget.provider??'', serviceName: widget.serviceName??'', consultationFee:widget.consultationFee, date: widget.date??'', time: widget.time??'', Id:'',));} : null,
+          onPressed: agreed
+              ? () {
+                  Get.to(
+                    CategoriesBooingPage(
+                      user1: widget.user1,
+                      provider: widget.provider ?? '',
+                      serviceName: widget.serviceName ?? '',
+                      consultationFee: widget.consultationFee,
+                      date: widget.date ?? '',
+                      time: widget.time ?? '',
+                      Id: '',
+                    ),
+                  );
+                }
+              : null,
           style: ElevatedButton.styleFrom(
             backgroundColor: agreed ? Colors.blue : Colors.grey.shade300,
             foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
             padding: const EdgeInsets.symmetric(vertical: 14),
           ),
-          child: Text("Pay \$${totalAmount.toStringAsFixed(2)}",
-              style: const TextStyle(fontSize: 18)),
+          child: Text(
+            "Pay \$${totalAmount.toStringAsFixed(2)}",
+            style: const TextStyle(fontSize: 18),
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        actionsPadding: EdgeInsets.all(10),
+        elevation: 10,
+        toolbarHeight: 100,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
+        title: Text(
+          "Payment\nComplete your booking",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 23,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
 
@@ -62,32 +107,14 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               // Header
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
-                decoration:  BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-                ),
-                child: const Text(
-                  "Payment\nComplete your booking",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 23,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-
               const SizedBox(height: 15),
 
               // Booking Summary
-              const Text("Booking Summary",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                "Booking Summary",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
 
               const SizedBox(height: 10),
 
@@ -96,7 +123,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
               summaryRow("Date", widget.date),
               summaryRow("Time", widget.time),
               summaryRow("Consultation Fee", "\$${widget.consultationFee}"),
-              summaryRow("Service Tax (5%)", "\$${serviceTax.toStringAsFixed(2)}"),
+              summaryRow(
+                "Service Tax (5%)",
+                "\$${serviceTax.toStringAsFixed(2)}",
+              ),
               summaryRow(
                 "Total Amount",
                 "\$${totalAmount.toStringAsFixed(2)}",
@@ -104,8 +134,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
               ),
 
               const SizedBox(height: 20),
-              const Text("Payment Method",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text(
+                "Payment Method",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               const SizedBox(height: 10),
 
               // Payment Options
@@ -115,10 +147,8 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
 
               const SizedBox(height: 20),
 
-            
               if (selectedMethod == 0) buildCardForm(),
 
-     
               if (selectedMethod == 1)
                 Row(
                   children: [
@@ -127,7 +157,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
                       onChanged: (v) => setState(() => agreed = v!),
                     ),
                     const Expanded(
-                        child: Text("I agree to the cancellation and refund policy"))
+                      child: Text(
+                        "I agree to the cancellation and refund policy",
+                      ),
+                    ),
                   ],
                 ),
 
@@ -141,8 +174,6 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
       ),
     );
   }
-
-
 
   Widget summaryRow(String title, String value, {bool isBlue = false}) {
     return Padding(
@@ -174,7 +205,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: isSelected ? Colors.blue : Colors.grey.shade300, width: 2),
+          border: Border.all(
+            color: isSelected ? Colors.blue : Colors.grey.shade300,
+            width: 2,
+          ),
           color: isSelected ? Colors.blue.shade50 : Colors.white,
         ),
         child: Row(
@@ -182,8 +216,7 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
             Icon(icon, color: Colors.black54),
             const SizedBox(width: 12),
             Expanded(child: Text(title, style: const TextStyle(fontSize: 16))),
-            if (isSelected)
-              const Icon(Icons.check_circle, color: Colors.blue)
+            if (isSelected) const Icon(Icons.check_circle, color: Colors.blue),
           ],
         ),
       ),
@@ -194,8 +227,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Card Details",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        const Text(
+          "Card Details",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 10),
         inputField("Card Number", "1234 5678 9012 3456"),
         Row(
@@ -225,8 +260,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("UPI Details",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        const Text(
+          "UPI Details",
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
         const SizedBox(height: 10),
         inputField("UPI ID", "yourname@upi"),
         Row(
@@ -236,9 +273,10 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
               onChanged: (v) => setState(() => agreed = v!),
             ),
             const Expanded(
-                child: Text("I agree to the cancellation and refund policy")),
+              child: Text("I agree to the cancellation and refund policy"),
+            ),
           ],
-        )
+        ),
       ],
     );
   }
@@ -253,8 +291,9 @@ class _CategoriePaymentPageState extends State<CategoriePaymentPage> {
           filled: true,
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade300)),
+            borderRadius: BorderRadius.circular(12),
+            borderSide: BorderSide(color: Colors.grey.shade300),
+          ),
         ),
       ),
     );

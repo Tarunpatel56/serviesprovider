@@ -8,12 +8,10 @@ import 'package:healthcare/utils/text_utils.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class BookingPage extends StatefulWidget {
-  
-
-  
-   final profList? user;
+  final profList? user;
   final String? from;
-  const BookingPage({Key? key, required this.user, this.from,  }) : super(key: key);
+  const BookingPage({Key? key, required this.user, this.from})
+    : super(key: key);
 
   @override
   State<BookingPage> createState() => _BookingPageState();
@@ -65,32 +63,57 @@ class _BookingPageState extends State<BookingPage> {
           child: SizedBox(
             height: 52,
             child: ElevatedButton(
-              onPressed: canProceed
-                  ? () {
-                     final fee = double.parse(
-  services[selectedServiceIndex!]['price']
-      .toString()
-      .replaceAll("\$", ""),
-);
+              onPressed: () {
+                if (selectedServiceIndex == null) {
+                  Get.snackbar(
+                    "Select Service",
+                    "Please select a consultation service",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red.shade100,
+                  );
+                  return;
+                }
 
-if (widget.user != null) {
-  Get.to(
-    PaymentPage(
-      provider: widget.user?.tittle ?? '',
-      serviceName: services[selectedServiceIndex!]['title'],
-      consultationFee: fee,
-      date: "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
-      time: selectedTime!,
-      user: widget.user!,
-    ),
-  );
-}
+                if (selectedDate == null) {
+                  Get.snackbar(
+                    "Select Date",
+                    "Please select an appointment date",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red.shade100,
+                  );
+                  return;
+                }
 
-                     
-                       
-                      
-                    }
-                  : null,
+                if (selectedTime == null) {
+                  Get.snackbar(
+                    "Select Time",
+                    "Please select a time slot",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red.shade100,
+                  );
+                  return;
+                }
+
+                /// ALL SET → GO TO PAYMENT
+                final fee = double.parse(
+                  services[selectedServiceIndex!]['price']
+                      .toString()
+                      .replaceAll("\$", ""),
+                );
+
+                Get.to(
+                  PaymentPage(
+                    provider: widget.user?.tittle ?? '',
+                    serviceName: services[selectedServiceIndex!]['title'],
+                    consultationFee: fee,
+                    date:
+                        "${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}",
+                    time: selectedTime!,
+                    user: widget.user!,
+                  ),
+                );
+              },
+
               style: ElevatedButton.styleFrom(
                 backgroundColor: canProceed
                     ? Colors.blue
@@ -110,54 +133,46 @@ if (widget.user != null) {
           ),
         ),
       ),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        actionsPadding: EdgeInsets.all(10),
+        elevation: 10,
+        toolbarHeight: 100,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Book Appointment',
+              style: AppTextStyles.titleStyle.copyWith(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              widget.user?.tittle ?? '',
+              style: AppTextStyles.subtitleStyle.copyWith(
+                color: Colors.white70,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              decoration: BoxDecoration(
-                color: AppColors.headerBg,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(28),
-                  bottomRight: Radius.circular(28),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // back button
-                  GestureDetector(
-                    onTap: () => Navigator.of(context).maybePop(),
-                    child: Container(
-                      width: 36,
-                      height: 36,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.15),
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(Icons.arrow_back, color: Colors.white),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Book Appointment',
-                    style: AppTextStyles.titleStyle.copyWith(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                   widget.user?.tittle??'',
-                    style: AppTextStyles.subtitleStyle.copyWith(
-                      color: Colors.white70,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.fromLTRB(12, 12, 12, 20),

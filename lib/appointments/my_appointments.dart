@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcare/appointments/appintment_Controller.dart';
 import 'package:healthcare/home/detail_page.dart';
+import 'package:healthcare/home/message_page.dart';
+import 'package:healthcare/messagelist/message_model.dart';
+import 'package:healthcare/model/professional_model.dart';
 
 import 'appointment_model.dart';
 import 'package:healthcare/utils/text_utils.dart';
 import 'package:healthcare/utils/color_util.dart';
 
 class MyAppointments extends StatelessWidget {
-
-
-  MyAppointments({super.key,});
-  
+  MyAppointments({super.key});
 
   // Put controller
   final AppointmentsController ctrl = Get.put(AppointmentsController());
@@ -22,60 +22,39 @@ class MyAppointments extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColors.primary,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadiusGeometry.only(
+              bottomLeft: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+            ),
+          ),
+          actionsPadding: EdgeInsets.all(10),
+          elevation: 10,
+          toolbarHeight: 100,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'My Appointments',
+                style: AppTextStyles.subHeadingTextStyle2.copyWith(
+                  color: Colors.white,
+                ),
+              ),
+              SizedBox(height: 6),
+              Text(
+                'Track and manage your bookings',
+                style: AppTextStyles.headingTextStyle2.copyWith(
+                  color: Colors.white70,
+                ),
+              ),
+            ],
+          ),
+        ),
         body: SafeArea(
           child: Column(
             children: [
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 14,
-                ),
-
-                height: Get.height * 0.18,
-                decoration: const BoxDecoration(
-                  color: AppColors.primary,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(35),
-                    bottomRight: Radius.circular(30),
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: () => Get.back(),
-                      child: Container(
-                        width: 38,
-                        height: 38,
-                        decoration: BoxDecoration(
-                          color: Colors.white12,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                   SizedBox(height: 10),
-                    Text(
-                      'My Appointments',
-                      style: AppTextStyles.subHeadingTextStyle2.copyWith(
-                        color: Colors.white,
-                      ),
-                    ),
-                     SizedBox(height: 6),
-                    Text(
-                      'Track and manage your bookings',
-                      style: AppTextStyles.headingTextStyle2.copyWith(
-                        color: Colors.white70,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
               Material(
                 color: Colors.white,
                 child: Container(
@@ -87,6 +66,10 @@ class MyAppointments extends StatelessWidget {
                   ),
                   child: TabBar(
                     indicatorSize: TabBarIndicatorSize.tab,
+                    dividerColor: Colors.transparent,
+
+                    indicatorColor: Colors.transparent,
+
                     indicator: BoxDecoration(
                       color: AppColors.primary,
                       borderRadius: BorderRadius.circular(30),
@@ -126,9 +109,7 @@ class MyAppointments extends StatelessWidget {
                     Obx(() {
                       final list = ctrl.past;
                       if (list.isEmpty) {
-                        return  Center(
-                          child: Text('No past appointments'),
-                        );
+                        return Center(child: Text('No past appointments'));
                       }
                       return ListView.separated(
                         padding: EdgeInsets.symmetric(vertical: 8),
@@ -154,12 +135,19 @@ class MyAppointments extends StatelessWidget {
 
   Widget _appointmentCard(AppointmentModel data, {required bool isUpcoming}) {
     return InkWell(
-      onTap: () {
-      
+      onTap: () { final profList provider = profList(
+    image: data.image,         // assuming AppointmentModel has image
+    tittle: data.tittle,       // provider name
+    subtittle: data.catg,      // category or subtitle
+     // if profList has price field
+    about: data.perps,         // map purpose/description
+// optional
+    // add other fields as needed by your profList constructor
+  );
 
-},
+        Get.to(DetailPage(user: provider , index: data));
+      },
 
-      
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -191,18 +179,16 @@ class MyAppointments extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: Get.height*0.08,
-                    width: Get.width*0.2,
+                    height: Get.height * 0.08,
+                    width: Get.width * 0.2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      image: 
-                           DecorationImage(
-                              image: AssetImage(data.image!),
-                              fit: BoxFit.cover,
-                            )
-                         
-                  
-                  ),),
+                      image: DecorationImage(
+                        image: AssetImage(data.image!),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
 
                   SizedBox(width: 12),
 
@@ -262,7 +248,12 @@ class MyAppointments extends StatelessWidget {
                     color: Colors.blue,
                   ),
                   SizedBox(width: 6),
-                  Expanded(child: Text(data.location ?? '',style: AppTextStyles.headingTextStyle2,)),
+                  Expanded(
+                    child: Text(
+                      data.location ?? '',
+                      style: AppTextStyles.headingTextStyle2,
+                    ),
+                  ),
                 ],
               ),
               Divider(),
@@ -273,8 +264,16 @@ class MyAppointments extends StatelessWidget {
                 children: [
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () {},
-                      icon: Icon(Icons.message_outlined, size: 18),
+                      onPressed: () {
+                        final partner = msgListModel(
+                          image: data.image,
+                          tittle: data.tittle,
+                          subtittle: data.catg,
+                        );
+
+                        Get.to(MessagePage(user: partner));
+                      },
+                      icon: Icon(Icons.message_outlined, size: 15),
                       label: Text('Message'),
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
@@ -287,7 +286,7 @@ class MyAppointments extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: Icon(Icons.call, size: 18),
+                      icon: Icon(Icons.call, size: 15),
                       label: Text('Call'),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade100,

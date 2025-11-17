@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:healthcare/bottombar/bottombar.dart';
 import 'package:healthcare/categories/categorie_model.dart';
 import 'package:healthcare/home/home_page.dart';
 import 'package:healthcare/model/professional_model.dart';
@@ -155,7 +156,7 @@ class _CategoriesBooingPageState extends State<CategoriesBooingPage> {
           SizedBox(width:Get.width*0.9,
             child: ElevatedButton.icon(
               onPressed: () {
-                Get.offAll(BottomAppBar());
+                Get.offAll(Bottombar());
               },
               style: ElevatedButton.styleFrom(backgroundColor: Colors.white),
               label: Text("Back to Home"),
