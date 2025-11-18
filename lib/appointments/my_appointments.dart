@@ -273,8 +273,8 @@ class MyAppointments extends StatelessWidget {
 
                         Get.to(MessagePage(user: partner));
                       },
-                      icon: Icon(Icons.message_outlined, size: 15),
-                      label: Text('Message'),
+                      icon: Icon(Icons.message_outlined, size: 12),
+                      label: Text('Message',style: TextStyle(fontSize: 10),),
                       style: OutlinedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
@@ -286,8 +286,8 @@ class MyAppointments extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton.icon(
                       onPressed: () {},
-                      icon: Icon(Icons.call, size: 15),
-                      label: Text('Call'),
+                      icon: Icon(Icons.call, size: 12),
+                      label: Text('Call',style: TextStyle(fontSize: 13),),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green.shade100,
                         foregroundColor: Colors.black,
@@ -311,7 +311,7 @@ class MyAppointments extends StatelessWidget {
                     child: Center(
                       child: Text(
                         isUpcoming ? 'Cancel' : 'Rate & Review',
-                        style: TextStyle(
+                        style: TextStyle(fontSize: 12,
                           color: isUpcoming ? Colors.red : Colors.orange,
                         ),
                       ),

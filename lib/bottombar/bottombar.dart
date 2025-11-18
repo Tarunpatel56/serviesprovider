@@ -1,5 +1,7 @@
 import 'package:animated_botton_navigation/animated_botton_navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:healthcare/appointments/appointment_model.dart';
 import 'package:healthcare/appointments/my_appointments.dart';
 import 'package:healthcare/home/home_page.dart';
@@ -23,6 +25,7 @@ class _BottombarState extends State<Bottombar> {
     Center(child: MyAppointments()),
     Center(child: MessageList()),
     Center(child: ProfilePage()),
+    
   ];
   
 

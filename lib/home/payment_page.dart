@@ -75,7 +75,7 @@ class _PaymentPageState extends State<PaymentPage> {
         toolbarHeight: 100,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+              Navigator.of(context).maybePop();
           },
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),

@@ -21,26 +21,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-
-          children: [
-            Container(
-              padding: EdgeInsets.all(10),
-              width: double.infinity,
-              height: Get.height * 0.15,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(35),
-                  bottomRight: Radius.circular(30),
-                ),
-                color: AppColors.primary,
-              ),
-              child: Column(
+    return Scaffold(   appBar: AppBar(
+        title:   Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+             
                 children: [
                   Text(
                     "Welcome Back",
@@ -52,7 +36,25 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-            ),
+        backgroundColor: AppColors.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        actionsPadding: EdgeInsets.all(15),
+        elevation: 10,
+        toolbarHeight: 100,
+       
+        
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+
+          children: [
+           
             SizedBox(height: Get.height * 0.05),
             Padding(
               padding: const EdgeInsets.all(15),
@@ -80,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                         hintStyle: AppTextStyles.subHeadingTextStyle,
                       ),
                     ),
-                    SizedBox(height: Get.height * 0.02),
+                    SizedBox(height: Get.height * 0.01),
                     Text("Password", style: AppTextStyles.headingTextStyle3),
                     TextFormField(
                       inputFormatters: [],
@@ -160,7 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                         Divider(),
                       ],
                     ),
-                    SizedBox(height: Get.height * 0.05),
+                    SizedBox(height: Get.height * 0.02),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -198,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    SizedBox(height: Get.height * 0.05),
+                    SizedBox(height: Get.height * 0.02),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -208,10 +210,10 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            Get.to(CreatePage());
+                            Get.offAll(CreatePage());
                           },
                           child: Text(
-                            " Sign Up",
+                            "Sign Up",
                             style: TextStyle(color: Colors.blue, fontSize: 18),
                           ),
                         ),

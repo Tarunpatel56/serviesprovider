@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(11),
               child: Column(
                 children: [
                   TextFormField(
@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {},
                         child: Text(
                           "See All",
-                          style: AppTextStyles.headingTextStyle2,
+                          style: TextStyle(color: Colors.blue),
                         ),
                       ),
                     ],
@@ -209,12 +209,13 @@ class _HomePageState extends State<HomePage> {
 
       child: Center(
         child: Container(
-          padding: EdgeInsets.all(20),
+        
+          padding: EdgeInsets.only(top: 25,bottom: 20,right: 5,left: 5),
           child: Column(
             children: [
               CircleAvatar(backgroundImage: AssetImage(data.image ?? '')),
               // Icon(IconData(int.parse(data.icon ?? '0xf041'), fontFamily: 'MaterialIcons')),
-              Text(data.name ?? "", maxLines: 1),
+              Text(data.name ?? "",style: TextStyle(fontSize: 12),),
             ],
           ),
         ),
@@ -229,7 +230,7 @@ class _HomePageState extends State<HomePage> {
       },
       child: ListTile(
         leading: Container(
-          width: Get.width * 0.2,
+          width: Get.width * 0.19,
           height: Get.height * 0.1,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
@@ -245,11 +246,11 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Icon(Icons.star, color: Colors.amber),
                 Text(data.rating ?? ''),
-                SizedBox(width: 10),
+                SizedBox(width: 5),
                 Text(("(${data.ratinguser ?? ''})")),
-                SizedBox(width: 10),
+                SizedBox(width: 5),
 
-                Icon(Icons.workspace_premium, size: 18),
+                Icon(Icons.workspace_premium, size: 14),
                 Text(data.exp ?? ''),
               ],
             ),

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:healthcare/home/message_page.dart';
 import 'package:healthcare/messagelist/message_controller.dart';
 import 'package:healthcare/utils/color_util.dart';
+import 'package:healthcare/utils/text_utils.dart';
 
 class MessageList extends StatefulWidget {
   const MessageList({super.key});
@@ -19,29 +20,50 @@ class _MessageListState extends State<MessageList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25),bottomRight: Radius.circular(25))),
         elevation: 10,
         toolbarHeight: 90,
       
         
-        title: Text(
+        title: Column(crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+          Text(
           "Messages",
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(color: Colors.white, fontSize: 23),
         ),
+        Text("Click a chat to continue the conversation",style: AppTextStyles.subHeadingTextStyle4,)
+
+        ],)
       ),
 
-      body: Obx(() {
-        final list = ctrl.msg;
 
-        return ListView.separated(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            return _serviceTile(list[index]);
-          },
-          separatorBuilder: (context, index) => SizedBox(height: 10),
-        );
-      }),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [  
+                TextFormField(
+            decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(25),),hintText: "Search...",prefixIcon: Icon(Icons.search)),
+          ),
+              
+              Obx(() {
+                final list = ctrl.msg;
+              
+                return ListView.separated(
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                  itemCount: list.length,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return _serviceTile(list[index]);
+                  },
+                  separatorBuilder: (context, index) => SizedBox(height: 10),
+                );
+              }),
+            ],
+          ),
+        ),
+      ),
     );
   }
 

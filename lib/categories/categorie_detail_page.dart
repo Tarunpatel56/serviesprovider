@@ -64,10 +64,10 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
         ),
         actionsPadding: EdgeInsets.all(10),
         elevation: 10,
-        toolbarHeight: 100,
+        toolbarHeight: 100,title: Text(widget.user1.tittle??'',style: AppTextStyles.subHeadingTextStyle3,textAlign: TextAlign.center,),
         leading: IconButton(
           onPressed: () {
-            Get.back();
+            Navigator.of(context).maybePop();
           },
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
@@ -129,8 +129,8 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
                         children: [
                           Card(
                             child: Container(padding: EdgeInsets.all(10),
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
+                            height: Get.height * 0.13,
+                          width: Get.width * 0.25,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -147,8 +147,8 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
                           ),
                           Card(
                             child: Container(padding: EdgeInsets.all(10),
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
+                           height: Get.height * 0.13,
+                          width: Get.width * 0.25,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -166,8 +166,8 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
                           ),
                           Card(
                             child: Container(padding: EdgeInsets.all(10),
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
+                              height: Get.height * 0.13,
+                              width: Get.width * 0.25,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -210,7 +210,7 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
                           Icons.location_on_outlined,
                           color: Colors.blue,
                         ),
-                        title: Text("Medical Centerr Downtown"),
+                        title: Text(widget.user1.location??''),
                         subtitle: Text("123 Health street, medical district"),
                       ),
                       Align(
@@ -410,9 +410,9 @@ class _CategorieDetailPageState extends State<CategorieDetailPage> {
                 ),
                 label: Text(
                   "Book Appointment",
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
-                icon: Icon(Icons.calendar_today_outlined, color: Colors.white),
+                icon: Icon(Icons.calendar_today_outlined, color: Colors.white,size: 13,),
               ),
             ),
           ],

@@ -81,7 +81,7 @@ class _EditProfileState extends State<EditProfile> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
 
-                        hintText: "Name",
+                        hintText: "Last Name",
                         alignLabelWithHint: bool.fromEnvironment(
                           AutofillHints.email,
                         ),
@@ -92,7 +92,7 @@ class _EditProfileState extends State<EditProfile> {
                     TextButton(
                       onPressed: () {},
                       child: Text(
-                        "SUMBMIT",
+                        "SUBMIT",
                         style: TextStyle(
                           color: Colors.blue,
                           fontSize: 15,

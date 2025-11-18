@@ -58,13 +58,13 @@ class _DetailPageState extends State<DetailPage> {
             bottomLeft: Radius.circular(25),
             bottomRight: Radius.circular(25),
           ),
-        ),
+        ),title: Text(widget.user.tittle??'',style: AppTextStyles.subHeadingTextStyle3,textAlign: TextAlign.center,),
         actionsPadding: EdgeInsets.all(10),
         elevation: 10,
         toolbarHeight: 100,
         leading: IconButton(
           onPressed: () {
-            Get.back();
+             Navigator.of(context).maybePop();
           },
           icon: Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
@@ -95,9 +95,12 @@ class _DetailPageState extends State<DetailPage> {
                     widget.user.tittle ?? '',
                     style: AppTextStyles.headingTextStyle,
                   ),
-                  Text(
-                    widget.user.subtittle ?? '',
-                    style: AppTextStyles.headingTextStyle4,
+                  Align(alignment: AlignmentGeometry.center,
+                    child: Text(
+                      widget.user.subtittle ?? '',
+                      style: AppTextStyles.headingTextStyle4,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -115,8 +118,8 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       Card(
                         child: Container(
-                          height: Get.height * 0.1,
-                          width: Get.width * 0.2,
+                   height: Get.height*0.12,
+                          width: Get.width * 0.25,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,8 +136,8 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                       Card(
                         child: Container(
-                          height: Get.height * 0.1,
-                          width: Get.width * 0.2,
+                          height: Get.height * 0.12,
+                          width: Get.width * 0.25,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -152,8 +155,8 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                       Card(
                         child: Container(
-                          height: Get.height * 0.1,
-                          width: Get.width * 0.2,
+                          height: Get.height * 0.12,
+                          width: Get.width * 0.25,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -366,10 +369,10 @@ class _DetailPageState extends State<DetailPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
+            Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Consultation Fee"),
-                Text("\$${widget.user.price}"),
+                Text(widget.user.price??''),
               ],
             ),
             SizedBox(
@@ -385,7 +388,7 @@ class _DetailPageState extends State<DetailPage> {
                   "Book Appointment",
                   style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
-                icon: Icon(Icons.calendar_today_outlined, color: Colors.white),
+                icon: Icon(Icons.calendar_today_outlined, color: Colors.white,size: 13,),
               ),
             ),
           ],

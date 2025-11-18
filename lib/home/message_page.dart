@@ -178,16 +178,23 @@ class _MessagePageState extends State<MessagePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primary,
-        leading: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CircleAvatar(backgroundImage: AssetImage(partnerImage!)),
-        ),
-        title: Text(partnerName, style: const TextStyle(color: Colors.white)),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.menu, color: AppColors.background),
+
+        leading:IconButton(onPressed: (){ Navigator.of(context).maybePop();}, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        title: Row(mainAxisAlignment:MainAxisAlignment.start,
+        children: [ CircleAvatar(backgroundImage: AssetImage(partnerImage!)),
+SizedBox(width: 10,),
+          Text(partnerName, style: const TextStyle(color: Colors.white)),
+        ],), shape: RoundedRectangleBorder(
+          borderRadius: BorderRadiusGeometry.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
           ),
+        ),
+        actionsPadding: EdgeInsets.all(15),
+        elevation: 10,
+        toolbarHeight: 80,
+        actions: [
+          
         ],
       ),
       body: Column(

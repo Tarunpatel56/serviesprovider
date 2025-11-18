@@ -22,9 +22,9 @@ class catgmodel {
 
 List catgList = [
   {"image": "assets/doctor.png", "name": "Doctor"},
-  {"image": "assets/salon.png", "name": "salon"},
-  {"image": "assets/spa.png", "name": "spa"},
-  {"image": "assets/therapist.png", "name": "therapist"},
-    {"image": "assets/dentist.png", "name": "dentist"},
-  {"image": "assets/yoga.png", "name": "yoga"},
+  {"image": "assets/salon.png", "name": "Salon"},
+  {"image": "assets/spa.png", "name": "Spa"},
+  {"image": "assets/therapist.png", "name": "Therapist"},
+    {"image": "assets/dentist.png", "name": "Dentist"},
+  {"image": "assets/yoga.png", "name": "Yoga"},
 ];
